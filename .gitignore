@@ -1,0 +1,5 @@
+/node_modules
+
+# Ignore bundles for developpement branchs
+/css/*
+/js/*-bundle.js

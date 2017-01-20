@@ -1,0 +1,27 @@
+{
+  "name": "integration.js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "npm run build",
+
+    "build": "run-s build:*",
+    "build:css": "node-sass --output-style expanded scss -o css",
+    "build:js": "browserify js/main.js -o js/main-bundle.js -t [ babelify --presets [ es2015 ] ] -g [ uglifyify -x .js]",
+
+    "watch": "run-p watch:*",
+    "watch:css": "node-sass --output-style expanded scss -o css -w",
+    "watch:js": "watchify js/main.js -o js/main-bundle.js -t [ babelify --presets [ es2015 ] ]"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.3.0",
+    "node-sass": "^4.3.0",
+    "npm-run-all": "^4.0.1",
+    "uglifyify": "^3.0.4",
+    "watchify": "^3.8.0"
+  }
+}
