@@ -1,3 +1,5 @@
+import qs from 'query-string';
+
 const request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
@@ -20,7 +22,8 @@ request.onreadystatechange = function() {
     }
 };
 
-let source = '/sip/';
+let queryString = qs.parse(window.location.search);
+let source      = queryString.sip || '/sip/';
 
 request.open('GET', 'https://nameless-depths-66550.herokuapp.com' + source, true);
 request.send();
