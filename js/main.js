@@ -19,7 +19,7 @@ request.onreadystatechange = function() {
                 }
 
             });
-            $newDom.appendTo('#integration_infofficiel');
+            $newDom.appendTo('#contenu_integre');
         } else {
             // Error :(
         }
