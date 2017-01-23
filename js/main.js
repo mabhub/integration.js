@@ -1,5 +1,6 @@
 import qs from 'query-string';
 
+const uriBase = 'https://nameless-depths-66550.herokuapp.com';
 const request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
@@ -31,5 +32,5 @@ request.onreadystatechange = function() {
 let queryString = qs.parse(window.location.search);
 let source      = queryString.sip || '/sip/';
 
-request.open('GET', 'https://nameless-depths-66550.herokuapp.com' + source, true);
+request.open('GET', uriBase + source, true);
 request.send();
