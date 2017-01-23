@@ -15,10 +15,11 @@ request.onreadystatechange = function() {
             });
 
             $('a', $newDom).each((index, link) => {
-                let href = link.getAttribute('href');
-
-                if (href[0] === '/') {
-                    link.setAttribute('href', '?sip=' + href);
+                let href = link.getAttribute('href').split('/');
+                let sippub;
+                if (href[1] === 'sip') {
+                    sippub = href[2];
+                    link.setAttribute('href', '?sippub=' + sippub);
                 }
 
             });
@@ -30,7 +31,13 @@ request.onreadystatechange = function() {
 };
 
 let queryString = qs.parse(window.location.search);
-let source      = queryString.sip || '/sip/';
+let source      = '/sip/';
+
+if (queryString.sippub) {
+    source = '/sip/' + queryString.sippub;
+} else if (queryString.sip) {
+    source = queryString.sip;
+}
 
 request.open('GET', uriBase + source, true);
 request.send();
