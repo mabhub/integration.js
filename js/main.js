@@ -14,14 +14,13 @@ request.onreadystatechange = function() {
                 }
             });
 
+            let currentQuery = qs.parse(window.location.search);
             $('a', $newDom).each((index, link) => {
                 let href = link.getAttribute('href').split('/');
-                let sippub;
                 if (href[1] === 'sip') {
-                    sippub = href[2];
-                    link.setAttribute('href', '?sippub=' + sippub);
+                    currentQuery.sippub = href[2];
+                    link.setAttribute('href', '?' + qs.stringify(currentQuery));
                 }
-
             });
             $newDom.appendTo('#contenu_integre');
         } else {
