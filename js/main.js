@@ -7,6 +7,10 @@ request.onreadystatechange = function() {
         if (this.status >= 200 && this.status < 400) {
             let $newDom = $(this.responseText).find('.content-wrapper');
 
+            $('*', $newDom).each((index, element) => {
+                element.className = element.className.length && element.className.split(' ').map(cl => 'prefix-' + cl).join(' ') || '';
+            });
+
             $('a', $newDom).each((index, link) => {
                 let href = link.getAttribute('href');
 
